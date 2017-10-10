@@ -1,0 +1,12 @@
+<script>
+	var DB = DB || {};
+	DB.collections || {};
+	DB.collections = {
+		{% for collection in collections %}
+			'{{ collection.title | handleize }}': {
+				collectionData: {{ collection | json }},
+				products: {{ collection.products | json }}
+			}{%unless forloop.last == true%},{%endunless%}
+		{% endfor %}
+	}
+</script>

@@ -1,0 +1,41 @@
+.app{
+	width: 100%;
+	&-container{
+		width: 100%;
+		padding: 1rem;
+		position: relative;
+	}
+}
+#admin_bar_iframe{
+	display: none !important;
+}
+#SearchDrawer{
+	display: none !important;
+}
+#shopify-section-header{
+	//display: none !important;
+}
+#shopify-section-footer{
+	display: none !important;
+}
+.in-page-link{
+	display: none !important;
+}
+
+.logo{
+	width: calc(100% - 4rem);
+	max-width: 300px;
+	img{
+		width: 100%;
+	}
+}
+
+div{
+	display: block;
+	box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,p{
+	margin: 0;
+	padding: 0;
+}
