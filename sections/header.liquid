@@ -1,0 +1,26 @@
+<header id="header"></header>
+
+<script>
+  var headerData = {{ section.settings | json }};
+  {% assign link = linklists[section.settings.main_linklist].links | map: 'object' %}
+  var link_list = {{ link | json }};
+</script>
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "logo"
+      }
+    ]
+  }
+{% endschema %}
