@@ -10,7 +10,12 @@
 // 		BASE
 // ---------------
 // Mixins
+@import 'base/colors.scss';
+
+
+//Global
 @import 'base/global.scss';
+
 
 
 // ------------------
@@ -25,3 +30,6 @@
 // ------------------
 
 @import 'component/product.scss';
+@import 'component/title.scss';
+@import 'component/header.scss';
+@import 'component/collection.scss';

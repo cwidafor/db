@@ -1,0 +1,29 @@
+.header{
+	background-color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	&-link{
+		text-decoration: none;
+		color: $color-header;
+		margin: 0 1rem;
+		text-transform: lowercase;
+		&__container{
+			padding-top: 1.75rem;
+		}
+	}
+
+	&-logo{
+		padding: 1rem 2rem;
+		width: 10rem;
+		float: left;
+		position: absolute;
+		top: 0;
+		left: 0;
+		img{
+			width: 100%;
+		}
+	}
+}

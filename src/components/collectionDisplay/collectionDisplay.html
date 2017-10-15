@@ -1,0 +1,14 @@
+<div class="collection">
+	<div class="collection-item" v-for="product in collection.products">
+		<div class="collection-item__logo">
+			<img src="https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602">
+		</div>
+		<div class="collection-item__image">
+			<img :src="product.images[0]">
+		</div>
+		<div class="collection-item__info">
+			<p>{{ product.title }}</p>
+			<p>{{ 101 - product.variants[0].inventory_quantity }} of 100</p>
+		</div>
+	</div>
+</div>

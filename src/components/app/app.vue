@@ -1,5 +1,6 @@
 <template><div class="app-container">
 	<router-view v-if="storeData != null"></router-view>
+	<collectionDisplay :select="selectFunction" :collection="storeData.collections.featured"></collectionDisplay>
 </div>
 </template><script>module.exports = {
 

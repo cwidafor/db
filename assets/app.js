@@ -21586,7 +21586,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app-container"},[(_vm.storeData != null)?_c('router-view'):_vm._e()],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app-container"},[(_vm.storeData != null)?_c('router-view'):_vm._e(),_vm._v(" "),_c('collectionDisplay',{attrs:{"select":_vm.selectFunction,"collection":_vm.storeData.collections.featured}})],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -21624,6 +21624,7 @@ window.router = new VueRouter({
 });
 
 Vue.component('product', require('./product/product.vue'));
+Vue.component('collectionDisplay', require('./collectionDisplay/collectionDisplay.vue'));
 
  const app = new Vue({
      el: '#app',
@@ -21642,7 +21643,45 @@ Vue.component('product', require('./product/product.vue'));
      extends: require('./header/header.vue')
  });
 
-},{"./app/app.vue":7,"./header/header.vue":9,"./homepage/homepage.vue":10,"./product/product.vue":11,"./store.js":12,"jquery":1,"vue":5,"vue-router":4,"vuex":6}],9:[function(require,module,exports){
+},{"./app/app.vue":7,"./collectionDisplay/collectionDisplay.vue":9,"./header/header.vue":10,"./homepage/homepage.vue":11,"./product/product.vue":12,"./store.js":13,"jquery":1,"vue":5,"vue-router":4,"vuex":6}],9:[function(require,module,exports){
+;(function(){
+'use strict';
+
+module.exports = {
+
+  mixins: [],
+
+  data: function data() {
+    return {};
+  },
+
+  props: ['collection'],
+
+  computed: {},
+
+  methods: {},
+
+  created: function created() {},
+
+  mounted: function mounted() {}
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection"},_vm._l((_vm.collection.products),function(product){return _c('div',{staticClass:"collection-item"},[_vm._m(0,true),_vm._v(" "),_c('div',{staticClass:"collection-item__image"},[_c('img',{attrs:{"src":product.images[0]}})]),_vm._v(" "),_c('div',{staticClass:"collection-item__info"},[_c('p',[_vm._v(_vm._s(product.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(101 - product.variants[0].inventory_quantity)+" of 100")])])])}))}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection-item__logo"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602"}})])}]
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-568a6a79", __vue__options__)
+  } else {
+    hotAPI.rerender("data-v-568a6a79", __vue__options__)
+  }
+})()}
+},{"vue":5,"vue-hot-reload-api":3}],10:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -21674,7 +21713,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"header"})}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"header"},[_c('div',{staticClass:"header-logo"},[_c('img',{attrs:{"src":_vm.data.logo}})]),_vm._v(" "),_c('div',{staticClass:"header-link__container"},[_c('a',{staticClass:"header-link",attrs:{"href":"/"}},[_vm._v("\n\t\t\tnew pins\n\t\t")]),_vm._v(" "),_vm._l((_vm.linkList),function(link){return (link != null)?_c('a',{staticClass:"header-link",attrs:{"href":link.handle}},[_vm._v("\n\t\t\t"+_vm._s(link.title)+"\n\t\t")]):_vm._e()})],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -21686,7 +21725,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.rerender("data-v-07e4328f", __vue__options__)
   }
 })()}
-},{"vue":5,"vue-hot-reload-api":3}],10:[function(require,module,exports){
+},{"vue":5,"vue-hot-reload-api":3}],11:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -21740,7 +21779,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.rerender("data-v-1b0db9a2", __vue__options__)
   }
 })()}
-},{"vue":5,"vue-hot-reload-api":3}],11:[function(require,module,exports){
+},{"vue":5,"vue-hot-reload-api":3}],12:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -21786,7 +21825,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.rerender("data-v-16652fe2", __vue__options__)
   }
 })()}
-},{"vue":5,"vue-hot-reload-api":3}],12:[function(require,module,exports){
+},{"vue":5,"vue-hot-reload-api":3}],13:[function(require,module,exports){
 
 module.exports = {
 
