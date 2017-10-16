@@ -1,0 +1,16 @@
+@font-face {
+    font-family: apercuBold;
+    src: url(https://cdn.shopify.com/s/files/1/2434/8199/files/apercu-bold-webfont.ttf?11740707327111878731);
+}
+@font-face {
+    font-family: apercuMono;
+    src: url(https://cdn.shopify.com/s/files/1/2434/8199/files/apercu-mono-webfont.ttf?11740707327111878731);
+}
+
+@font-face {
+    font-family: elephant;
+    src: url(https://cdn.shopify.com/s/files/1/2434/8199/files/Elephant-Black.ttf?16208188952837957232);
+}
+
+$font-header: 'elephant';
+$font-copy: 'apercuMono';

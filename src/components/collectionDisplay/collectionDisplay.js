@@ -11,10 +11,15 @@ module.exports = {
   },
 
   props: [
-    'collection'
+    'collection',
+    'select'
   ],
 
   computed: {
+
+  },
+
+  filters:{
 
   },
 

@@ -21655,9 +21655,11 @@ module.exports = {
     return {};
   },
 
-  props: ['collection'],
+  props: ['collection', 'select'],
 
   computed: {},
+
+  filters: {},
 
   methods: {},
 
@@ -21669,7 +21671,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection"},_vm._l((_vm.collection.products),function(product){return _c('div',{staticClass:"collection-item"},[_vm._m(0,true),_vm._v(" "),_c('div',{staticClass:"collection-item__image"},[_c('img',{attrs:{"src":product.images[0]}})]),_vm._v(" "),_c('div',{staticClass:"collection-item__info"},[_c('p',[_vm._v(_vm._s(product.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(101 - product.variants[0].inventory_quantity)+" of 100")])])])}))}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection"},_vm._l((_vm.collection.products),function(product){return _c('div',{staticClass:"collection-item"},[_c('div',{staticClass:"collection-item__container"},[_vm._m(0,true),_vm._v(" "),_c('div',{staticClass:"collection-item__image"},[_c('img',{attrs:{"src":product.images[0]}})]),_vm._v(" "),_c('div',{staticClass:"collection-item__info"},[_c('p',[_vm._v(_vm._s(product.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(101 - product.variants[0].inventory_quantity)+" of 100")])])]),_vm._v(" "),_c('div',{staticClass:"collection-item__footer"},[_c('h4',[_vm._v(_vm._s(product.title)+" --")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(product.price))])])])}))}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection-item__logo"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
