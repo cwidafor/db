@@ -12,6 +12,7 @@
 // Mixins
 @import 'base/colors.scss';
 @import 'base/fonts.scss';
+@import 'base/animations.scss';
 
 
 //Global
@@ -34,3 +35,4 @@
 @import 'component/title.scss';
 @import 'component/header.scss';
 @import 'component/collection.scss';
+@import 'component/blurb.scss';

@@ -1,4 +1,4 @@
-<template><div class="header">
+<template><div class="header" :class="headerTheme">
 	<div class="header-logo">
 		<img :src="data.logo">
 	</div>
@@ -29,7 +29,9 @@
   ],
 
   computed: {
-    
+    headerTheme: function(){
+      return store.state.headerTheme;
+    }
   },
 
   methods: {

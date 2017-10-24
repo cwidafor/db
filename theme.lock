@@ -8,9 +8,9 @@ assets/NewCompRender.mp4:
 assets/ajax-loader.gif:
   development: 2017-10-10T19:49:59-04:00   deca8b0ecd6974227d157b6d7068995d
 assets/app.js:
-  development: 2017-10-16T09:07:35-04:00   77021d8933ac82b251953b3cc0b247e4
+  development: 2017-10-22T23:10:59-04:00   bdf7cdd7174e25fcd6bc8caaeae80b11
 assets/dbcss.css:
-  development: 2017-10-15T21:42:39-04:00   df8635b27618263584e96f72f9d66cd2
+  development: 2017-10-22T23:04:58-04:00   0a633713b0f0b7481c4208199b188710
 assets/deathboys_logo.svg:
   development: 2017-10-10T19:50:04-04:00   704345f106863f4d581098286aab1f3a
 assets/gift-card.js:
@@ -46,7 +46,7 @@ layout/gift_card.liquid:
 layout/password.liquid:
   development: 2017-10-10T19:50:09-04:00   6351674ea67c53e01643a5bea02f7d0a
 layout/theme.liquid:
-  development: 2017-10-14T00:25:36-04:00   e006cc8716c1306d6dc6101b3f5db1a6
+  development: 2017-10-20T21:58:12-04:00   75bb6be9824f3b04406482a101c308ba
 locales/de.json:
   development: 2017-10-10T19:50:09-04:00   b7cd7749b0a0d9df967227ee73bcbb7f
 locales/en.default.json:
@@ -62,7 +62,7 @@ locales/pt-BR.json:
 locales/pt-PT.json:
   development: 2017-10-10T19:50:09-04:00   886dc401e68b213f57ec73598fb17d13
 sections/blurb.liquid:
-  development: 2017-10-14T20:56:36-04:00   e7f49203dc739d2eb095c1e297e9e83f
+  development: 2017-10-20T22:08:19-04:00   6e8aaab5689264f104797ec87c060076
 sections/cart-template.liquid:
   development: 2017-10-10T19:49:57-04:00   f07185af88ed866aaf60d6567f794269
 sections/featured-product.liquid:

@@ -42,9 +42,14 @@ h1,h2,h3,h4,h5,p{
 
 h1,h2,h3,h4,h5{
 	font-family: $font-header;
+	font-weight: 100;
+	letter-spacing: 1px;
 }
 p,a{
 	font-family: $font-copy;
+	font-weight: 100;
+	letter-spacing: 1px;
+	line-height: 1.25rem;
 }
 
 h2{

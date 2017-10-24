@@ -16,7 +16,9 @@ module.exports = {
   ],
 
   computed: {
-    
+    headerTheme: function(){
+      return store.state.headerTheme;
+    }
   },
 
   methods: {

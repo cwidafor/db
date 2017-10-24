@@ -11,13 +11,16 @@ module.exports = {
   },
 
   props: [
-    'product'
+    'candidate',
+    'close',
+    'productProperties',
+    'animationOn'
   ],
 
   computed: {
     mainVariant: function(){
-      if(this.product.variants != undefined){
-        return this.product.variants[0];
+      if(this.candidate.variants != undefined){
+        return this.candidate.variants[0];
       }else{
         return 'loading';
       }

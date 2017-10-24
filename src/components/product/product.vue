@@ -1,10 +1,17 @@
-<template><div class="product" :style="{ backgroundColor: mainVariant.option1 }">
-	<div class="product-image"> 
-		<img :src="product.images[0]">
-	</div>
-	<div class="product-title">
-		<h2>{{ product.title }}</h2>
-		<p v-if="product.tags.indexOf('Limited Run') > -1">Limited Run</p>
+<template><div class="product" v-if="candidate != null">
+	<div class="product-bg" @click="close"></div>
+
+	<div class="product-container" v-bind:style="[productProperties, animationOn]">
+		<div class="product-logo">
+			<img src="https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602">
+		</div>
+		<div class="product-image">
+			<img :src="candidate.images[0]">
+		</div>
+		<div class="product-info">
+			<p>{{ candidate.title }}</p>
+			<p>{{ 101 - candidate.variants[0].inventory_quantity }} of 100</p>
+		</div>
 	</div>
 </div>
 </template><script>module.exports = {
@@ -20,13 +27,16 @@
   },
 
   props: [
-    'product'
+    'candidate',
+    'close',
+    'productProperties',
+    'animationOn'
   ],
 
   computed: {
     mainVariant: function(){
-      if(this.product.variants != undefined){
-        return this.product.variants[0];
+      if(this.candidate.variants != undefined){
+        return this.candidate.variants[0];
       }else{
         return 'loading';
       }

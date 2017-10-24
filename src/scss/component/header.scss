@@ -5,6 +5,8 @@
 	left: 0;
 	width: 100%;
 	text-align: center;
+	z-index: 120;
+	padding-bottom: 1.5rem;
 	&-link{
 		text-decoration: none;
 		color: $color-header;

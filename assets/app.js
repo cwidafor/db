@@ -21550,7 +21550,7 @@ module.exports = index;
 }).call(this,require('_process'))
 },{"_process":2}],7:[function(require,module,exports){
 ;(function(){
-"use strict";
+'use strict';
 
 module.exports = {
 
@@ -21558,7 +21558,18 @@ module.exports = {
 
   data: function data() {
     return {
-      storeData: null
+      storeData: null,
+      product: null,
+      productProperties: {
+        height: '0',
+        width: '0',
+        top: '0',
+        left: '0',
+        transition: 'none'
+      },
+      productAnimation: {
+        transition: 'none'
+      }
     };
   },
 
@@ -21573,6 +21584,46 @@ module.exports = {
       } else {
         setTimeout(this.getData, 50);
       }
+    },
+    selectFunction: function selectFunction(product) {
+      var that = this,
+          selector = '#' + product.id,
+          screenDimesions = {
+        height: window.screen.availHeight,
+        width: window.screen.width
+      },
+          wrapperDimensions = $('.app-container').position(),
+          productOrigin = {
+        position: $(selector).position(),
+        height: String($(selector).height()) + 'px',
+        width: String($(selector).width()) + 'px'
+      },
+          topCalc = String(wrapperDimensions.top + productOrigin.position.top - $(window).scrollTop()) + 'px',
+          leftCalc = String(wrapperDimensions.left + productOrigin.position.left) + 'px';
+
+      this.productProperties = {
+        height: productOrigin.height,
+        width: productOrigin.width,
+        top: topCalc,
+        left: leftCalc
+      };
+      this.productAnimation = {
+        transition: 'all 0.6s'
+      };
+
+      this.product = product;
+
+      Vue.nextTick(function () {
+        that.productProperties = {
+          height: '500px',
+          width: '350px',
+          top: '190px',
+          left: '200px'
+        };
+      });
+    },
+    closeFunction: function closeFunction() {
+      this.product = null;
     }
   },
 
@@ -21586,7 +21637,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app-container"},[(_vm.storeData != null)?_c('router-view'):_vm._e(),_vm._v(" "),_c('collectionDisplay',{attrs:{"select":_vm.selectFunction,"collection":_vm.storeData.collections.featured}})],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app-container"},[(_vm.storeData != null)?_c('router-view'):_vm._e(),_vm._v(" "),_c('collectionDisplay',{attrs:{"selectProduct":_vm.selectFunction,"collection":_vm.storeData.collections.featured}}),_vm._v(" "),_c('product',{attrs:{"candidate":_vm.product,"close":_vm.closeFunction,"productProperties":_vm.productProperties,"animationOn":_vm.productAnimation}})],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -21655,11 +21706,32 @@ module.exports = {
     return {};
   },
 
-  props: ['collection', 'select'],
+  props: ['collection', 'selectProduct'],
 
   computed: {},
 
-  filters: {},
+  filters: {
+    money: function money(value) {
+
+      if (value !== undefined) {
+        value = value.toString();
+        if (value.length === 1) {
+          var firstHalf = '0';
+          var secondHalf = '0' + value;
+        } else if (value.length === 2) {
+          var firstHalf = '0';
+          var secondHalf = value;
+        } else {
+          var firstHalf = value.slice(0, value.length - 2);
+          var secondHalf = value.substring(value.length, value.length - 2);
+        }
+
+        return '$' + firstHalf + '.' + secondHalf;
+      } else {
+        return '$' + value;
+      }
+    }
+  },
 
   methods: {},
 
@@ -21671,7 +21743,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection"},_vm._l((_vm.collection.products),function(product){return _c('div',{staticClass:"collection-item"},[_c('div',{staticClass:"collection-item__container"},[_vm._m(0,true),_vm._v(" "),_c('div',{staticClass:"collection-item__image"},[_c('img',{attrs:{"src":product.images[0]}})]),_vm._v(" "),_c('div',{staticClass:"collection-item__info"},[_c('p',[_vm._v(_vm._s(product.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(101 - product.variants[0].inventory_quantity)+" of 100")])])]),_vm._v(" "),_c('div',{staticClass:"collection-item__footer"},[_c('h4',[_vm._v(_vm._s(product.title)+" --")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(product.price))])])])}))}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection"},_vm._l((_vm.collection.products),function(product){return _c('div',{staticClass:"collection-item",attrs:{"id":product.id},on:{"click":function($event){_vm.selectProduct(product)}}},[_c('div',{staticClass:"collection-item__container"},[_vm._m(0,true),_vm._v(" "),_c('div',{staticClass:"collection-item__image"},[_c('img',{attrs:{"src":product.images[0]}})]),_vm._v(" "),_c('div',{staticClass:"collection-item__info"},[_c('p',[_vm._v(_vm._s(product.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(101 - product.variants[0].inventory_quantity)+" of 100")])])]),_vm._v(" "),_c('div',{staticClass:"collection-item__footer"},[_c('h4',[_vm._v(_vm._s(product.title)+" --")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm._f("money")(product.price)))])])])}))}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection-item__logo"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -21700,7 +21772,11 @@ module.exports = {
 
   props: [],
 
-  computed: {},
+  computed: {
+    headerTheme: function headerTheme() {
+      return store.state.headerTheme;
+    }
+  },
 
   methods: {},
 
@@ -21715,7 +21791,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"header"},[_c('div',{staticClass:"header-logo"},[_c('img',{attrs:{"src":_vm.data.logo}})]),_vm._v(" "),_c('div',{staticClass:"header-link__container"},[_c('a',{staticClass:"header-link",attrs:{"href":"/"}},[_vm._v("\n\t\t\tnew pins\n\t\t")]),_vm._v(" "),_vm._l((_vm.linkList),function(link){return (link != null)?_c('a',{staticClass:"header-link",attrs:{"href":link.handle}},[_vm._v("\n\t\t\t"+_vm._s(link.title)+"\n\t\t")]):_vm._e()})],2)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"header",class:_vm.headerTheme},[_c('div',{staticClass:"header-logo"},[_c('img',{attrs:{"src":_vm.data.logo}})]),_vm._v(" "),_c('div',{staticClass:"header-link__container"},[_c('a',{staticClass:"header-link",attrs:{"href":"/"}},[_vm._v("\n\t\t\tnew pins\n\t\t")]),_vm._v(" "),_vm._l((_vm.linkList),function(link){return (link != null)?_c('a',{staticClass:"header-link",attrs:{"href":link.handle}},[_vm._v("\n\t\t\t"+_vm._s(link.title)+"\n\t\t")]):_vm._e()})],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -21793,12 +21869,12 @@ module.exports = {
     return {};
   },
 
-  props: ['product'],
+  props: ['candidate', 'close', 'productProperties', 'animationOn'],
 
   computed: {
     mainVariant: function mainVariant() {
-      if (this.product.variants != undefined) {
-        return this.product.variants[0];
+      if (this.candidate.variants != undefined) {
+        return this.candidate.variants[0];
       } else {
         return 'loading';
       }
@@ -21815,8 +21891,8 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"product",style:({ backgroundColor: _vm.mainVariant.option1 })},[_c('div',{staticClass:"product-image"},[_c('img',{attrs:{"src":_vm.product.images[0]}})]),_vm._v(" "),_c('div',{staticClass:"product-title"},[_c('h2',[_vm._v(_vm._s(_vm.product.title))]),_vm._v(" "),(_vm.product.tags.indexOf('Limited Run') > -1)?_c('p',[_vm._v("Limited Run")]):_vm._e()])])}
-__vue__options__.staticRenderFns = []
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.candidate != null)?_c('div',{staticClass:"product"},[_c('div',{staticClass:"product-bg",on:{"click":_vm.close}}),_vm._v(" "),_c('div',{staticClass:"product-container",style:([_vm.productProperties, _vm.animationOn])},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"product-image"},[_c('img',{attrs:{"src":_vm.candidate.images[0]}})]),_vm._v(" "),_c('div',{staticClass:"product-info"},[_c('p',[_vm._v(_vm._s(_vm.candidate.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(101 - _vm.candidate.variants[0].inventory_quantity)+" of 100")])])])]):_vm._e()}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"product-logo"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -21832,7 +21908,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 module.exports = {
 
   state: {
-
+  	headerTheme: 'light'
   },
 
   mutations: {

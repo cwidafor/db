@@ -45,6 +45,8 @@
   
   {{content_for_layout}}
 
+  {% section 'blurb' %}
+
 
   {{ 'app.js'  | asset_url | script_tag }}
   {{ 'theme.js'  | asset_url | script_tag }}

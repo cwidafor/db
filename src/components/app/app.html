@@ -1,4 +1,5 @@
 <div class="app-container">
 	<router-view v-if="storeData != null"></router-view>
-	<collectionDisplay :select="selectFunction" :collection="storeData.collections.featured"></collectionDisplay>
+	<collectionDisplay :selectProduct="selectFunction" :collection="storeData.collections.featured"></collectionDisplay>
+	<product :candidate="product" :close="closeFunction" :productProperties="productProperties" :animationOn="productAnimation"></product>
 </div>
