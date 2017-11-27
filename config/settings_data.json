@@ -1,1 +1,73 @@
-{}
+{
+  "current": {
+    "color_text": "#3d4246",
+    "color_body_text": "#788188",
+    "color_sale_text": "#7796a8",
+    "color_borders": "#e8e9eb",
+    "color_button": "#7796a8",
+    "color_button_text": "#fff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#000",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 25,
+    "color_body_bg": "#fff",
+    "type_header_family": "Google_Work+Sans_600_sans",
+    "type_header_base_size": "26px",
+    "type_base_family": "Google_Work+Sans_400_sans",
+    "type_base_size": "16px",
+    "type_bold_product_titles": false,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo-black-nws.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#ffffff",
+    "checkout_heading_font": "Roboto",
+    "checkout_body_font": "Roboto",
+    "checkout_accent_color": "#ea382a",
+    "checkout_button_color": "#ea382a",
+    "checkout_error_color": "#972aea",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "main_linklist": "main-menu",
+          "logo": "shopify:\/\/shop_images\/DB-logo-black.png"
+        }
+      },
+      "title": {
+        "type": "title",
+        "settings": {
+          "title": "The \"Goodbye\" Drop"
+        }
+      },
+      "blurb": {
+        "type": "blurb",
+        "settings": {
+          "title": "All Good Things End",
+          "copy": "When we say limited run, we mean it. This is the first and last time these pins will be sold. 1 pin type per person, x\/100, created with love by the Death Boys.",
+          "photo": "shopify:\/\/shop_images\/tumblr_nsoio4J0EQ1r3v60ao1_500.gif"
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}
