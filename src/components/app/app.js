@@ -6,6 +6,7 @@ module.exports = {
 
   data: function () {
     return{
+      overlayStatus: false,
       storeData: null,
       product: null,
       productProperties: {
@@ -26,10 +27,112 @@ module.exports = {
   ],
 
   computed: {
-
+      cartStatus: function(){
+         return store.state.cartStatus;
+      }
   },
 
   methods: {
+
+    // master GET method
+    get: function(endpoint, doneCallback, failCallback) {
+      $.ajax({
+        type: 'GET',
+        url: endpoint,
+        contentType: 'application/json; charset=UTF-8',
+        dataType: 'json'
+      }).done(function(res) {
+        if( typeof doneCallback === 'function' ) {
+          doneCallback(res);
+        } else {
+          //console.log('callback provided not a function.');
+        }
+      }).fail(function(jqXHR, status) {
+        if( typeof failCallback === 'function' ) {
+          failCallback(status);
+        } else {
+          //console.log('fail callback provided not a function.');
+        }
+      });
+    },
+
+    // master POST method
+    post: function(endpoint, payload, doneCallback, failCallback) {
+      $.ajax({
+        type: 'POST',
+        url: endpoint,
+        contentType: 'application/json; charset=UTF-8',
+        dataType: 'json',
+        data: JSON.stringify(payload)
+      }).done(function(res) {
+        if( typeof doneCallback === 'function' ) {
+          doneCallback(res);
+        } else {
+          //console.log('done callback provided not a function.');
+        }
+      }).fail(function(jqXHR, status) {
+        if( typeof failCallback === 'function' ) {
+          failCallback(status);
+        } else {
+          //console.log('fail callback provided not a function.');
+        }
+      });
+    },
+
+    closeCart: function(){
+      store.commit('cart', false);
+    },
+
+    refreshCart: function(callback){
+      var that = this;
+      this.get('/cart.js', function(response){
+        Vue.set(that.storeData, 'cart', response);
+        store.commit('updateCartTotal', response.item_count);
+        if(callback != undefined){
+          callback();
+        }
+      });
+    },
+
+    removeFromCart: function(itemID, callback){
+      var that = this,
+          payload = {
+            quantity: 0,
+            id: itemID
+          };
+      $.post('/cart/change.js', payload, function(response){
+        callback();
+      });
+    },
+
+    addToCart: function(item){
+
+      var that = this,
+          double = false,
+          payload = {
+            quantity: 1,
+            id: item.id
+          };
+
+
+      this.storeData.cart.items.forEach(function(cartItem){
+        if(item.id === cartItem.id){
+          double = true;
+        }
+      });
+
+      if(double){
+        return false;
+      }
+      
+
+      this.post('/cart/add.js', payload, function(response){
+        that.refreshCart(function(){
+         store.commit('cart', true);
+        });
+      });
+    },
+
     getData: function(){
       if(window.DB != undefined){
         this.storeData = window.DB;
@@ -51,7 +154,7 @@ module.exports = {
             width: String($(selector).width()) + 'px'
           },
           topCalc = String((wrapperDimensions.top + productOrigin.position.top) - $(window).scrollTop()) + 'px',
-          leftCalc = String(wrapperDimensions.left + productOrigin.position.left) + 'px';
+          leftCalc = String(wrapperDimensions.left + productOrigin.position.left + 16) + 'px';
 
       this.productProperties = {
         height: productOrigin.height,
@@ -64,20 +167,20 @@ module.exports = {
       }
       //Sumbit product data to component
       this.product = product;
-      //190
 
-      //600
-
+      store.commit('changeTheme', 'dark');
 
       //Transform to new position
-      Vue.nextTick(function(){
-        that.productProperties = {
-          height: '500px',
-          width: '350px',
-          top: '190px',
-          left: '200px'
-        };
-      });
+      setTimeout(function(){
+        Vue.nextTick(function(){
+          that.productProperties = {
+            height: '500px',
+            width: '350px',
+            top: '190px',
+            left: '200px'
+          };
+        });
+      }, 50)
 
 
 
@@ -85,6 +188,7 @@ module.exports = {
     },
     closeFunction: function(){
       this.product = null;
+       store.commit('changeTheme', 'light');
     }
   },
 

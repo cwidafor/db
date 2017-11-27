@@ -6,30 +6,36 @@ module.exports = {
 
   data: function () {
     return{
-      
+      removingItem: null
     }
   },
 
   props: [
-    'candidate',
-    'close',
-    'productProperties',
-    'animationOn',
-    'addToCart'
+    'cartData',
+    'removeFromCart',
+    'cartRefresh'
   ],
 
   computed: {
-    mainVariant: function(){
-      if(this.candidate.variants != undefined){
-        return this.candidate.variants[0];
-      }else{
-        return 'loading';
+      cartStatus: function(){
+         return store.state.cartStatus;
       }
-    }
   },
 
-  filters: {
+  methods: {
+    removeItem: function(itemID){
+      var that = this;
+      this.removingItem = itemID;
+      this.removeFromCart(itemID, function(){
+        that.cartRefresh(function(){
+           that.removingItem = null;
+        });
+      });
+    }
 
+  },
+
+  filters:{
       money: function(value){
 
         if(value !== undefined){
@@ -51,12 +57,8 @@ module.exports = {
 
           } else {
               return '$' + value;
-        }
       }
-  },
-
-  methods:{
-
+    }
   },
 
   created: function(){
@@ -64,6 +66,6 @@ module.exports = {
   },
 
   mounted: function() {
-
+    this.cartRefresh();
   }
 }

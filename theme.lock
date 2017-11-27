@@ -8,9 +8,9 @@ assets/NewCompRender.mp4:
 assets/ajax-loader.gif:
   development: 2017-10-10T19:49:59-04:00   deca8b0ecd6974227d157b6d7068995d
 assets/app.js:
-  development: 2017-10-22T23:10:59-04:00   bdf7cdd7174e25fcd6bc8caaeae80b11
+  development: 2017-11-15T00:44:12-05:00   bcca2739997e2b8cec4cc89dcb951700
 assets/dbcss.css:
-  development: 2017-10-22T23:04:58-04:00   0a633713b0f0b7481c4208199b188710
+  development: 2017-11-15T00:39:50-05:00   a6e100b130c6b3bee6135988e1f44d0e
 assets/deathboys_logo.svg:
   development: 2017-10-10T19:50:04-04:00   704345f106863f4d581098286aab1f3a
 assets/gift-card.js:
@@ -46,7 +46,7 @@ layout/gift_card.liquid:
 layout/password.liquid:
   development: 2017-10-10T19:50:09-04:00   6351674ea67c53e01643a5bea02f7d0a
 layout/theme.liquid:
-  development: 2017-10-20T21:58:12-04:00   75bb6be9824f3b04406482a101c308ba
+  development: 2017-11-15T00:33:15-05:00   c8f05b7bbb712c698174af88bd2fbb4d
 locales/de.json:
   development: 2017-10-10T19:50:09-04:00   b7cd7749b0a0d9df967227ee73bcbb7f
 locales/en.default.json:
@@ -62,7 +62,7 @@ locales/pt-BR.json:
 locales/pt-PT.json:
   development: 2017-10-10T19:50:09-04:00   886dc401e68b213f57ec73598fb17d13
 sections/blurb.liquid:
-  development: 2017-10-20T22:08:19-04:00   6e8aaab5689264f104797ec87c060076
+  development: 2017-11-14T20:30:19-05:00   1aaeaa24b919ccdd36b7f0bf619cd29c
 sections/cart-template.liquid:
   development: 2017-10-10T19:49:57-04:00   f07185af88ed866aaf60d6567f794269
 sections/featured-product.liquid:
@@ -80,7 +80,7 @@ snippets/collection-grid-item.liquid:
 snippets/comment.liquid:
   development: 2017-10-10T19:50:09-04:00   50406c82467014e1bbe15a62685b2536
 snippets/data-bundle.liquid:
-  development: 2017-10-10T19:50:09-04:00   31b059641546db074cbcd8513db31d3b
+  development: 2017-11-13T14:35:55-05:00   1fa2f434bd7d20dccaf8f364285efd55
 snippets/google-fonts.liquid:
   development: 2017-10-10T19:50:09-04:00   377ddc183ac7882100f47299bb8e0467
 snippets/icon-amazon_payments.liquid:

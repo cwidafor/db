@@ -3,6 +3,8 @@
 	top: 0;
 	left: 0;
 	z-index: 101;
+	width: 100%;
+	height: 100vh;
 
 	&-bg{
 		position: fixed;
@@ -52,6 +54,27 @@
 
 	&-footer{
 		padding-top: 2rem;
+	}
+
+
+	&-description{
+		width: 50%;
+		height: 100%;
+		margin-left: 600px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		h1{
+			text-align: left;
+			color: white;
+		}
+		p{
+			padding-bottom: 1rem;
+		}
+		&__info{
+			color: white;
+		}
 	}
 
 }

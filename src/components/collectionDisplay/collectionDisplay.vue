@@ -1,21 +1,33 @@
-<template><div class="collection">
-	<div class="collection-item" v-for="product in collection.products" @click="selectProduct(product)" :id="product.id">
+<template><div class="collection" v-if="collection != undefined && collection != null">
+	<div class="collection-item" v-if="collection.products != undefined" v-for="product in collection.products" @click="addToCart(product.variants[0])" :id="product.id" :class="itemStatusChecker(product)">
 		<div class="collection-item__container">
 			<div class="collection-item__logo">
 				<img src="https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602">
 			</div>
+
 			<div class="collection-item__image">
 				<img :src="product.images[0]">
 			</div>
-			<div class="collection-item__info">
-				<p>{{ product.title }}</p>
-				<p>{{ 101 - product.variants[0].inventory_quantity }} of 100</p>
+
+			<div class="collection-item__info" v-if="itemIsAdded(product) === true">
+				<p>Added To Cart</p>
+				<div class="collection-item__info__icon">
+					<img src="https://cdn.shopify.com/s/files/1/2434/8199/files/image.png?17583971083198994668">
+				</div>
 			</div>
+			<div class="collection-item__info" v-else>
+				<p>Add to cart</p>
+				<p>{{product.variants[0].inventory_quantity }}/100</p>
+			</div>
+
 		</div>
 		<div class="collection-item__footer">
 			<h4>{{ product.title }} --</h4>
 			<p>{{ product.price | money }}</p>
 		</div>
+<!-- 		<div class="collection-item__button">
+			<button class="alt-button">Add To Cart</button>
+		</div> -->
 	</div>
 </div></template><script>module.exports = {
 
@@ -31,7 +43,9 @@
 
   props: [
     'collection',
-    'selectProduct'
+    'selectProduct',
+    'addToCart',
+    'cartItems'
   ],
 
   computed: {
@@ -66,7 +80,28 @@
 
   methods: {
 
+    itemStatusChecker: function(product){
+      var that = this,
+          status = [];
 
+      this.cartItems.forEach(function(item){
+        if(item.id == product.variants[0].id){
+          status.push('alreadyAdded');
+        }
+      });
+      return status;
+    },
+    itemIsAdded: function(product){
+      var that = this,
+          status = false;
+
+      this.cartItems.forEach(function(item){
+        if(item.id == product.variants[0].id){
+          status = true;
+        }
+      });
+      return status;
+    }
   },
 
   created: function(){

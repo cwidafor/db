@@ -12,7 +12,9 @@ module.exports = {
 
   props: [
     'collection',
-    'selectProduct'
+    'selectProduct',
+    'addToCart',
+    'cartItems'
   ],
 
   computed: {
@@ -47,7 +49,28 @@ module.exports = {
 
   methods: {
 
+    itemStatusChecker: function(product){
+      var that = this,
+          status = [];
 
+      this.cartItems.forEach(function(item){
+        if(item.id == product.variants[0].id){
+          status.push('alreadyAdded');
+        }
+      });
+      return status;
+    },
+    itemIsAdded: function(product){
+      var that = this,
+          status = false;
+
+      this.cartItems.forEach(function(item){
+        if(item.id == product.variants[0].id){
+          status = true;
+        }
+      });
+      return status;
+    }
   },
 
   created: function(){

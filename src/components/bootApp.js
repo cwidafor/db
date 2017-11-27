@@ -23,6 +23,7 @@ window.router = new VueRouter({
 });
 
 Vue.component('product', require('./product/product.vue'));
+Vue.component('cart', require('./cart/cart.vue'));
 Vue.component('collectionDisplay', require('./collectionDisplay/collectionDisplay.vue'));
 
  const app = new Vue({

@@ -1,0 +1,25 @@
+<div class="cart" :class="{ 'open': cartStatus === true }">
+	<div class="cart-container">
+		<div class="cart-header">
+			<p>Your Cart</p>
+		</div>
+		<div class="cart-backpack">
+			<div class="cart-item" v-for="item in cartData.items">
+				<div class="cart-item__image">
+					<img :src="item.image">
+				</div>
+				<div class="cart-item__info">
+					<h5>{{ item.title }}</h5>
+					<p>{{ item.price | money }}</p>
+				</div>
+				<button class="alt-button" :class="{ 'activated': removingItem === item.id }" @click="removeItem(item.id)">Remove Item</button>
+			</div>
+		</div>
+
+		<div class="cart-button" v-if="cartData.items.length > 0">
+			<form method="post" action="/cart">
+				<input type="submit" value="Checkout" name="checkout"/>
+			</form>
+		</div>
+	</div>
+</div>

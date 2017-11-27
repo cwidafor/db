@@ -18,12 +18,16 @@ module.exports = {
   computed: {
     headerTheme: function(){
       return store.state.headerTheme;
+    },
+    cartTotal: function(){
+      return store.state.cartTotal;
     }
   },
 
   methods: {
-
-
+    openCart: function(){
+      store.commit('cart', true);
+    }
   },
 
   created: function(){
@@ -32,6 +36,7 @@ module.exports = {
   },
 
   mounted: function() {
+    
 
   }
 }

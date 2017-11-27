@@ -8,5 +8,6 @@
 				products: {{ collection.products | json }}
 			}{%unless forloop.last == true%},{%endunless%}
 		{% endfor %}
-	}
+	},
+	DB.cart = {{ cart | json }}
 </script>

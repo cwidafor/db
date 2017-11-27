@@ -13,4 +13,18 @@
 			<p>{{ 101 - candidate.variants[0].inventory_quantity }} of 100</p>
 		</div>
 	</div>
+
+	<div class="product-description">
+
+		<h1>{{ candidate.title }}</h1>
+		<div class="product-description__info">
+			<p>{{ candidate.description }}</p>
+			<div class="product-description__attributes">
+				<div class="">
+					
+				</div>
+				<button @click="addToCart(candidate.variants[0].id)">Add to Cart<span>{{ candidate.price | money }}</span></button>
+			</div>
+		</div>
+	</div>
 </div>

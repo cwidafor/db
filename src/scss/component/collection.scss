@@ -1,10 +1,12 @@
 .collection{
+
 	img{
 		width: 100%;
 	}
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	padding: 0 1rem;
 	max-width: 980px;
 	margin: auto;
@@ -37,7 +39,7 @@
 			margin: 2rem auto 0rem;
 		}
 		&__image{
-			width: 60%;
+			width: 92%;
 			margin: auto;
 		}
 		&__info{
@@ -45,11 +47,50 @@
 			width: 100%;
 			justify-content: space-between;
 			align-items: center;
-			margin: 0 0rem 0.5rem;
-			padding: 0 0.5rem
+			margin: 1rem;
+			width: 90%;
+			padding: 1rem;
+			background-color: white;
+			&__icon{
+				width: 1rem;
+				svg{
+					width: 100%;
+				}
+			}
+
 		}
 		&__footer{
 			padding-top: 2rem;
+			h4{
+				font-family:apercuBold;
+				font-size: 1.25rem;
+				letter-spacing: 0;
+				padding-bottom: 0.5rem;
+			}
+		}
+	}
+}
+
+///////////////////////////////
+//Tablet
+/////////////////////////////
+@media screen and (max-width: 900px) {
+
+}
+
+///////////////////////////////
+//Mobile
+/////////////////////////////
+@media screen and (max-width: 680px) {
+	.collection{
+		flex-direction: column;
+		padding: 0;
+		&-item{
+			margin: 1rem auto;
+			max-width: 320px;
+			&__image{
+				width: 100%;
+			}
 		}
 	}
 }
