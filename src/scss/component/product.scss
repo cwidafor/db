@@ -36,31 +36,21 @@
 	}
 
 	&-image{
-		width: 60%;
+		width: 100%;
 		margin: auto;
 		img{
 			width: 100%;
 		}
 	}
 
-	&-info{
-		display: flex;
-		width: 100%;
-		justify-content: space-between;
-		align-items: center;
-		margin: 0 0rem 0.5rem;
-		padding: 0 0.5rem
-	}
-
 	&-footer{
 		padding-top: 2rem;
 	}
 
-
 	&-description{
 		width: 50%;
 		height: 100%;
-		margin-left: 600px;
+		margin-left: calc(10% + 350px + 3rem);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

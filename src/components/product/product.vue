@@ -8,10 +8,6 @@
 		<div class="product-image">
 			<img :src="candidate.images[0]">
 		</div>
-		<div class="product-info">
-			<p>{{ candidate.title }}</p>
-			<p>{{ 101 - candidate.variants[0].inventory_quantity }} of 100</p>
-		</div>
 	</div>
 
 	<div class="product-description">
@@ -23,7 +19,15 @@
 				<div class="">
 					
 				</div>
-				<button @click="addToCart(candidate.variants[0].id)">Add to Cart<span>{{ candidate.price | money }}</span></button>
+
+				<div class="product-atc" v-if="itemIsAdded(candidate) === true">
+					<p>Added To Cart</p>
+					<div class="product-atc__icon">
+						<img src="https://cdn.shopify.com/s/files/1/2434/8199/files/image.png?17583971083198994668">
+					</div>
+				</div>
+				<!-- ATC -->
+				<button v-else @click="addToCart(candidate.variants[0])">Add to Cart<span>{{ candidate.price | money }}</span></button>
 			</div>
 		</div>
 	</div>
@@ -45,7 +49,8 @@
     'close',
     'productProperties',
     'animationOn',
-    'addToCart'
+    'addToCart',
+    'cartItems'
   ],
 
   computed: {
@@ -86,6 +91,18 @@
   },
 
   methods:{
+
+    itemIsAdded: function(product){
+      var that = this,
+          status = false;
+
+      this.cartItems.forEach(function(item){
+        if(item.id == product.variants[0].id){
+          status = true;
+        }
+      });
+      return status;
+    }
 
   },
 

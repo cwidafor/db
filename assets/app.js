@@ -21753,7 +21753,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.storeData != null)?_c('div',{staticClass:"app-container"},[(_vm.storeData != null)?_c('router-view'):_vm._e(),_vm._v(" "),_c('collectionDisplay',{attrs:{"selectProduct":_vm.selectFunction,"collection":_vm.storeData.collections.featured,"addToCart":_vm.addToCart,"cartItems":_vm.storeData.cart.items}}),_vm._v(" "),_c('product',{attrs:{"candidate":_vm.product,"close":_vm.closeFunction,"productProperties":_vm.productProperties,"animationOn":_vm.productAnimation,"addToCart":_vm.addToCart}}),_vm._v(" "),_c('cart',{attrs:{"cartData":_vm.storeData.cart,"removeFromCart":_vm.removeFromCart,"cartRefresh":_vm.refreshCart}}),_vm._v(" "),_c('div',{staticClass:"cart-overlay",class:{ 'active': _vm.cartStatus === true },on:{"click":function($event){_vm.closeCart()}}})],1):_vm._e()}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.storeData != null)?_c('div',{staticClass:"app-container"},[(_vm.storeData != null)?_c('router-view'):_vm._e(),_vm._v(" "),_c('collectionDisplay',{attrs:{"selectProduct":_vm.selectFunction,"collection":_vm.storeData.collections.featured,"addToCart":_vm.addToCart,"cartItems":_vm.storeData.cart.items}}),_vm._v(" "),_c('product',{attrs:{"candidate":_vm.product,"close":_vm.closeFunction,"productProperties":_vm.productProperties,"animationOn":_vm.productAnimation,"addToCart":_vm.addToCart,"cartItems":_vm.storeData.cart.items}}),_vm._v(" "),_c('cart',{attrs:{"cartData":_vm.storeData.cart,"removeFromCart":_vm.removeFromCart,"cartRefresh":_vm.refreshCart}}),_vm._v(" "),_c('div',{staticClass:"cart-overlay",class:{ 'active': _vm.cartStatus === true },on:{"click":function($event){_vm.closeCart()}}})],1):_vm._e()}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -21964,8 +21964,8 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.collection != undefined && _vm.collection != null)?_c('div',{staticClass:"collection"},_vm._l((_vm.collection.products),function(product){return (_vm.collection.products != undefined)?_c('div',{staticClass:"collection-item",class:_vm.itemStatusChecker(product),attrs:{"id":product.id},on:{"click":function($event){_vm.addToCart(product.variants[0])}}},[_c('div',{staticClass:"collection-item__container"},[_vm._m(0,true),_vm._v(" "),_c('div',{staticClass:"collection-item__image"},[_c('img',{attrs:{"src":product.images[0]}})]),_vm._v(" "),(_vm.itemIsAdded(product) === true)?_c('div',{staticClass:"collection-item__info"},[_c('p',[_vm._v("Added To Cart")]),_vm._v(" "),_vm._m(1,true)]):_c('div',{staticClass:"collection-item__info"},[_c('p',[_vm._v("Add to cart")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(product.variants[0].inventory_quantity)+"/100")])])]),_vm._v(" "),_c('div',{staticClass:"collection-item__footer"},[_c('h4',[_vm._v(_vm._s(product.title)+" --")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm._f("money")(product.price)))])])]):_vm._e()})):_vm._e()}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection-item__logo"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602"}})])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection-item__info__icon"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/image.png?17583971083198994668"}})])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.collection != undefined && _vm.collection != null)?_c('div',{staticClass:"collection"},_vm._l((_vm.collection.products),function(product){return (_vm.collection.products != undefined)?_c('div',{staticClass:"collection-item",class:_vm.itemStatusChecker(product),attrs:{"id":product.id},on:{"click":function($event){_vm.selectProduct(product)}}},[_c('div',{staticClass:"collection-item__container"},[_vm._m(0,true),_vm._v(" "),_c('div',{staticClass:"collection-item__image"},[_c('img',{attrs:{"src":product.images[0]}})])]),_vm._v(" "),_c('div',{staticClass:"collection-item__footer"},[_c('h4',[_vm._v(_vm._s(product.title)+" --")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm._f("money")(product.price)))])])]):_vm._e()})):_vm._e()}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collection-item__logo"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -22097,7 +22097,7 @@ module.exports = {
     return {};
   },
 
-  props: ['candidate', 'close', 'productProperties', 'animationOn', 'addToCart'],
+  props: ['candidate', 'close', 'productProperties', 'animationOn', 'addToCart', 'cartItems'],
 
   computed: {
     mainVariant: function mainVariant() {
@@ -22133,7 +22133,21 @@ module.exports = {
     }
   },
 
-  methods: {},
+  methods: {
+
+    itemIsAdded: function itemIsAdded(product) {
+      var that = this,
+          status = false;
+
+      this.cartItems.forEach(function (item) {
+        if (item.id == product.variants[0].id) {
+          status = true;
+        }
+      });
+      return status;
+    }
+
+  },
 
   created: function created() {},
 
@@ -22143,8 +22157,8 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.candidate != null)?_c('div',{staticClass:"product"},[_c('div',{staticClass:"product-bg",on:{"click":_vm.close}}),_vm._v(" "),_c('div',{staticClass:"product-container",style:([_vm.productProperties, _vm.animationOn])},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"product-image"},[_c('img',{attrs:{"src":_vm.candidate.images[0]}})]),_vm._v(" "),_c('div',{staticClass:"product-info"},[_c('p',[_vm._v(_vm._s(_vm.candidate.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(101 - _vm.candidate.variants[0].inventory_quantity)+" of 100")])])]),_vm._v(" "),_c('div',{staticClass:"product-description"},[_c('h1',[_vm._v(_vm._s(_vm.candidate.title))]),_vm._v(" "),_c('div',{staticClass:"product-description__info"},[_c('p',[_vm._v(_vm._s(_vm.candidate.description))]),_vm._v(" "),_c('div',{staticClass:"product-description__attributes"},[_c('div',{}),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.addToCart(_vm.candidate.variants[0].id)}}},[_vm._v("Add to Cart"),_c('span',[_vm._v(_vm._s(_vm._f("money")(_vm.candidate.price)))])])])])])]):_vm._e()}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"product-logo"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602"}})])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.candidate != null)?_c('div',{staticClass:"product"},[_c('div',{staticClass:"product-bg",on:{"click":_vm.close}}),_vm._v(" "),_c('div',{staticClass:"product-container",style:([_vm.productProperties, _vm.animationOn])},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"product-image"},[_c('img',{attrs:{"src":_vm.candidate.images[0]}})])]),_vm._v(" "),_c('div',{staticClass:"product-description"},[_c('h1',[_vm._v(_vm._s(_vm.candidate.title))]),_vm._v(" "),_c('div',{staticClass:"product-description__info"},[_c('p',[_vm._v(_vm._s(_vm.candidate.description))]),_vm._v(" "),_c('div',{staticClass:"product-description__attributes"},[_c('div',{}),_vm._v(" "),(_vm.itemIsAdded(_vm.candidate) === true)?_c('div',{staticClass:"product-atc"},[_c('p',[_vm._v("Added To Cart")]),_vm._v(" "),_vm._m(1)]):_c('button',{on:{"click":function($event){_vm.addToCart(_vm.candidate.variants[0])}}},[_vm._v("Add to Cart"),_c('span',[_vm._v(_vm._s(_vm._f("money")(_vm.candidate.price)))])])])])])]):_vm._e()}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"product-logo"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602"}})])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"product-atc__icon"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/image.png?17583971083198994668"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return

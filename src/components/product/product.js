@@ -15,7 +15,8 @@ module.exports = {
     'close',
     'productProperties',
     'animationOn',
-    'addToCart'
+    'addToCart',
+    'cartItems'
   ],
 
   computed: {
@@ -56,6 +57,18 @@ module.exports = {
   },
 
   methods:{
+
+    itemIsAdded: function(product){
+      var that = this,
+          status = false;
+
+      this.cartItems.forEach(function(item){
+        if(item.id == product.variants[0].id){
+          status = true;
+        }
+      });
+      return status;
+    }
 
   },
 

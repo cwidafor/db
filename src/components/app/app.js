@@ -177,7 +177,7 @@ module.exports = {
             height: '500px',
             width: '350px',
             top: '190px',
-            left: '200px'
+            left: '20%'
           };
         });
       }, 50)
