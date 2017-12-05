@@ -9,6 +9,14 @@ module.exports = {
       overlayStatus: false,
       storeData: null,
       product: null,
+      backgroundProperties: {
+        height: '0',
+        width: '0',
+        top: '0', 
+        left: '0',
+        transition: 'none',
+        transform: 'scale(1)'
+      },
       productProperties: {
         height: '0',
         width: '0',
@@ -30,6 +38,14 @@ module.exports = {
       cartStatus: function(){
          return store.state.cartStatus;
       }
+  },
+
+  watch: {
+    '$route' (to, from) {
+      if(to.params.id === undefined){
+        this.closeFunction();
+      }
+    }
   },
 
   methods: {
@@ -153,10 +169,21 @@ module.exports = {
             height: String($(selector).height()) + 'px',
             width: String($(selector).width()) + 'px'
           },
-          topCalc = String((wrapperDimensions.top + productOrigin.position.top) - $(window).scrollTop()) + 'px',
+          topCalc = String((wrapperDimensions.top + productOrigin.position.top) - $(window).scrollTop() + 40) + 'px',
           leftCalc = String(wrapperDimensions.left + productOrigin.position.left + 16) + 'px';
 
+      router.push({name: 'product', params: { id: product.title }});
+      $('body').css('height', '100%');
+      $('body').css('overflow', 'hidden');
+      $('body').css('position', 'absolute');
+
       this.productProperties = {
+        height: productOrigin.height,
+        width: productOrigin.width,
+        top: topCalc,
+        left: leftCalc
+      };
+      this.backgroundProperties = {
         height: productOrigin.height,
         width: productOrigin.width,
         top: topCalc,
@@ -174,11 +201,11 @@ module.exports = {
       setTimeout(function(){
         Vue.nextTick(function(){
           that.productProperties = {
-            height: '500px',
-            width: '350px',
-            top: '190px',
-            left: '20%'
+            width: '40%',
+            top: '0',
+            left: '0'
           };
+          that.backgroundProperties.transform = 'scale(8)';
         });
       }, 50)
 
@@ -188,7 +215,10 @@ module.exports = {
     },
     closeFunction: function(){
       this.product = null;
-       store.commit('changeTheme', 'light');
+      store.commit('changeTheme', 'light');
+      $('body').css('height', 'auto');
+      $('body').css('overflow', 'auto');
+      $('body').css('position', 'relative');
     }
   },
 

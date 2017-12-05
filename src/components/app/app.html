@@ -1,7 +1,7 @@
 <div class="app-container"  v-if="storeData != null">
 	<router-view v-if="storeData != null"></router-view>
 	<collectionDisplay :selectProduct="selectFunction" :collection="storeData.collections.featured" :addToCart="addToCart" :cartItems="storeData.cart.items"></collectionDisplay>
-	<product :candidate="product" :close="closeFunction" :productProperties="productProperties" :animationOn="productAnimation" :addToCart="addToCart" :cartItems="storeData.cart.items"></product>
+	<product :candidate="product" :close="closeFunction" :productProperties="productProperties" :backgroundProperties="backgroundProperties" :animationOn="productAnimation" :addToCart="addToCart" :cartItems="storeData.cart.items"></product>
 	<cart :cartData="storeData.cart" :removeFromCart="removeFromCart" :cartRefresh="refreshCart"></cart>
 	<div class="cart-overlay" :class="{ 'active': cartStatus === true }" @click="closeCart()"></div>
 </div>

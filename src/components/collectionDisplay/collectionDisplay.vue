@@ -1,9 +1,6 @@
 <template><div class="collection" v-if="collection != undefined && collection != null">
 	<div class="collection-item" v-if="collection.products != undefined" v-for="product in collection.products" @click="selectProduct(product)" :id="product.id" :class="itemStatusChecker(product)">
 		<div class="collection-item__container">
-			<div class="collection-item__logo">
-				<img src="https://cdn.shopify.com/s/files/1/2434/8199/files/deathboys_logo.svg?9698666479076779602">
-			</div>
 
 			<div class="collection-item__image">
 				<img :src="product.images[0]">
@@ -11,12 +8,9 @@
 
 		</div>
 		<div class="collection-item__footer">
-			<h4>{{ product.title }} --</h4>
+			<h4>{{ product.title }} &mdash;</h4>
 			<p>{{ product.price | money }}</p>
 		</div>
-<!-- 		<div class="collection-item__button">
-			<button class="alt-button">Add To Cart</button>
-		</div> -->
 	</div>
 </div></template><script>module.exports = {
 

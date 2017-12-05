@@ -1,5 +1,5 @@
 <template><div class="header" :class="headerTheme">
-	<div class="header-logo">
+	<div class="header-logo" @click="goHome()">
 		<svg version="1.1" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 442.8 162.4" style="enable-background:new 0 0 442.8 162.4;">
 			<g>
 				<path class="header-logo__color" d="M29.8,104.7c-1.7,0-2.5,1.2-2.5,2.8c-0.1,1.4,0.9,2.7,2.3,2.8c0.1,0,0.1,0,0.2,0h37.1c1.3,0.1,2.5-1,2.5-2.3
@@ -144,6 +144,9 @@
   methods: {
     openCart: function(){
       store.commit('cart', true);
+    },
+    goHome: function(){
+      router.push({name: 'homepage'});
     }
   },
 

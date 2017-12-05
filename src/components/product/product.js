@@ -14,6 +14,7 @@ module.exports = {
     'candidate',
     'close',
     'productProperties',
+    'backgroundProperties',
     'animationOn',
     'addToCart',
     'cartItems'
@@ -24,6 +25,20 @@ module.exports = {
       if(this.candidate.variants != undefined){
         return this.candidate.variants[0];
       }else{
+        return 'loading';
+      }
+    },
+    productAttributes: function(){
+      if(this.candidate.variants != undefined){
+        var mainVariant = this.mainVariant,
+            attrArray = [];
+
+        this.candidate.options.forEach(function(option, index){
+          attrArray.push({ name: option, value: mainVariant.options[index] });
+        });
+        return attrArray;
+
+      } else {
         return 'loading';
       }
     }

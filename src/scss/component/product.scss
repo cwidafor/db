@@ -7,21 +7,26 @@
 	height: 100vh;
 
 	&-bg{
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		opacity: 0;
-		height: 100vh;
-		background-color: black;
-		z-index: -1;
-		animation: bgFadeIn 0.3s forwards;
+		// position: fixed;
+		// top: 0;
+		// left: 0;
+		// width: 100%;
+		// opacity: 0;
+		// height: 100vh;
+		// background-color: black;
+		// z-index: -1;
+		// animation: bgFadeIn 0.3s forwards;
+		background: $red-base;
+		border-radius: 4px;
+		height: 100%;
+		flex-direction: column;
+		position: absolute;
 
 	}
 
 	&-container{
-		background: $red-gradient;
-		border-radius: 4px;
+		// background: $red-gradient;
+		// border-radius: 4px;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -50,21 +55,109 @@
 	&-description{
 		width: 50%;
 		height: 100%;
-		margin-left: calc(10% + 350px + 3rem);
+		margin-left: calc(40% + 1rem);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		position: relative;
+		z-index: 100;
 		h1{
-			text-align: left;
+			font-family: 'apercuBold';
+			align-self: flex-start;
 			color: white;
+			margin-bottom: 0.25rem;
+			font-size: 4rem;
+		}
+		h2{
+			font-family: 'apercuBold';
+			color: white;
+			margin-bottom: 2rem;
+			align-self: flex-start;
 		}
 		p{
 			padding-bottom: 1rem;
+			width: 50%;
 		}
 		&__info{
 			color: white;
+			display: flex;
+
+		}
+		&__wrapper{
+			padding-left: 1rem;
+			width: 50%;
+		}
+		&__attributes{
+			width: 100%;
+			margin-bottom: 1rem;
+
+			&__item{
+				
+				span{
+					float: right;
+				}
+				p{
+					width: 100%;
+					padding-bottom: 0;
+				}
+			}
 		}
 	}
+
+	&-atc{
+		display: flex;
+		width: 100%;
+		background-color: white;
+		color: black;
+		&__icon{
+			width: 2rem;
+			img{
+				width: 100%;
+			}
+		}
+	}
+}
+
+///////////////////////////////
+//Tablet
+/////////////////////////////
+@media screen and (max-width: 900px) {
+	.product{
+		height: auto;
+		&-description{
+			width: 100%;
+			margin: 0;
+			padding: 2rem;
+			h1{
+				font-size: 2rem;
+			}
+			h2{
+				font-size: 1rem;
+			}
+			&__info{
+				flex-direction: column;
+			}
+			p{
+				width: 100%;
+			}
+			&__wrapper{
+				width: 100%;
+				padding: 0;
+			}
+		}
+		&-container{
+			width: 75% !important;
+			margin: 3rem auto 0;
+			position: relative;
+			display: block;
+		}
+	}
+}
+
+///////////////////////////////
+//Mobile
+/////////////////////////////
+@media screen and (max-width: 680px) {
 
 }

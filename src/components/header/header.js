@@ -27,6 +27,9 @@ module.exports = {
   methods: {
     openCart: function(){
       store.commit('cart', true);
+    },
+    goHome: function(){
+      router.push({name: 'homepage'});
     }
   },
 

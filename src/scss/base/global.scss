@@ -4,6 +4,7 @@
 		width: 100%;
 		padding: 1rem;
 		position: relative;
+		padding-bottom: 8rem;
 	}
 }
 #admin_bar_iframe{
@@ -62,8 +63,9 @@ h4{
 	font-size: 1rem;
 }
 button{
-	background-color: $red-base;
-	padding: 1rem;
+	background-color: black;
+	color: white;
+	padding: 1.5rem 1rem;
 	border: none;
 	color: white;
 	transition: all 0.2s;
@@ -71,6 +73,8 @@ button{
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	position: relative;
+	width: 100%;
+	font-size: 0.75rem;
 	span{
 		margin-left: 1rem;
 	}
@@ -130,6 +134,19 @@ button{
 }
 
 
+.divider{
+	width: 100%;
+	height: 2px;
+	margin: 0.75rem 0;
+	background-color: white;
+}
+
+
+@media screen and (min-width: 1000px) {
+	.app-container{
+		margin-left: calc(50% - 500px);
+	}
+}
 
 ///////////////////////////////
 //Tablet

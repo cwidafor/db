@@ -55,6 +55,9 @@
         that.cartRefresh(function(){
            that.removingItem = null;
         });
+        // if(this.cartData){
+        //   store.commit('cart', false);
+        // }
       });
     }
 

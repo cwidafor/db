@@ -8,7 +8,7 @@
 	justify-content: center;
 	align-items: center;
 	padding: 0 1rem;
-	max-width: 980px;
+	max-width: 1080px;
 	margin: auto;
 	&:hover{
 		.collection-item{
@@ -25,7 +25,7 @@
 			opacity: 1 !important;
 		}
 		&__container{
-			background: $red-gradient;
+			background-color: $red-base;
 			border-radius: 4px;
 			height: 100%;
 			display: flex;
@@ -40,9 +40,7 @@
 		}
 		&__image{
 			width: 92%;
-			margin: auto;
-			margin-top: 1.5rem;
-			margin-bottom: 1.5rem;
+			margin: 6rem auto;
 		}
 		&__info{
 			display: flex;
@@ -90,8 +88,12 @@
 		&-item{
 			margin: 1rem auto;
 			max-width: 320px;
+			&__container{
+				background-color: $red-base;
+			}
 			&__image{
 				width: 100%;
+				margin: 2rem auto;
 			}
 		}
 	}

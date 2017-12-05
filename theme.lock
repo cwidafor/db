@@ -8,9 +8,9 @@ assets/NewCompRender.mp4:
 assets/ajax-loader.gif:
   development: 2017-11-26T20:19:17-05:00   deca8b0ecd6974227d157b6d7068995d
 assets/app.js:
-  development: 2017-11-26T20:52:32-05:00   4a990a78073b5d9476fdc3f9b5d2ffd2
+  development: 2017-12-05T00:16:33-05:00   99b35e4d80653df9a3ade87976cd5de1
 assets/dbcss.css:
-  development: 2017-11-29T19:56:03-05:00   d0b944fc8cd2761e5adbfef6d804abe6
+  development: 2017-12-05T01:15:54-05:00   cee4e3501982cbb08ab1af27ae184bee
 assets/deathboys_logo.svg:
   development: 2017-11-26T20:19:18-05:00   704345f106863f4d581098286aab1f3a
 assets/gift-card.js:
@@ -46,7 +46,7 @@ layout/gift_card.liquid:
 layout/password.liquid:
   development: 2017-11-26T20:19:20-05:00   6351674ea67c53e01643a5bea02f7d0a
 layout/theme.liquid:
-  development: 2017-11-26T20:19:20-05:00   c8f05b7bbb712c698174af88bd2fbb4d
+  development: 2017-12-04T23:13:48-05:00   76d6a1a4bc39774bc219ead0d6f2df75
 locales/de.json:
   development: 2017-11-26T20:19:20-05:00   b7cd7749b0a0d9df967227ee73bcbb7f
 locales/en.default.json:
@@ -72,7 +72,7 @@ sections/footer.liquid:
 sections/header.liquid:
   development: 2017-11-26T20:19:11-05:00   d44baa8c71478393b170beeeb79e8717
 sections/title.liquid:
-  development: 2017-11-26T20:19:11-05:00   d153102eef1a7fde3561d8bcbb18bfbc
+  development: 2017-12-04T23:07:55-05:00   4081cb351d554fb8ea1a8dd9fff18765
 snippets/bgset.liquid:
   development: 2017-11-26T20:19:20-05:00   85889bbc39b57621f32fad66317366fc
 snippets/collection-grid-item.liquid:

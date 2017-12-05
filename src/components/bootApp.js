@@ -18,7 +18,8 @@ window.store = new Vuex.Store( require('./store.js') );
 // Create Vue Router
 window.router = new VueRouter({
 	routes: [
-    { path: '/', component: require('./homepage/homepage.vue'), name:'homepage' }
+    { path: '/', name:'homepage' },
+    { path: '/:id', name:'product' }
   ]
 });
 

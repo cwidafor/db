@@ -1,5 +1,6 @@
 <div class="title">
   <h1>{{ section.settings.title }}</h1>
+  <p>{{ section.settings.copy }}</p>
 </div>
 {% schema %}
   {
@@ -10,6 +11,11 @@
         "type": "text",
         "id": "title",
         "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "copy",
+        "label": "Copy"
       }
     ]
   }
