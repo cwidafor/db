@@ -12,6 +12,7 @@
 	&.open{
 		transform: translateX(0);
 	}
+
 	&-overlay{
 		width: 100%;
 		height: 100vh;
@@ -63,10 +64,20 @@
 			}
 		}
 		&__info{
-			margin: auto;
+			margin-right: auto;
 		}
 		&__remove{
 			margin: auto;
+		}
+		&__remove{
+			width: 1rem;
+			margin: 0 1rem 0 0;
+			transition: transform 0.2s;
+			&:hover{
+				cursor: pointer;
+				transform: scale(1.02);
+			}
+
 		}
 	}
 	&-button{

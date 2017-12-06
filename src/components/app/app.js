@@ -117,11 +117,12 @@ module.exports = {
             id: itemID
           };
       $.post('/cart/change.js', payload, function(response){
+        console.log(response);
         callback();
       });
     },
 
-    addToCart: function(item){
+    addToCart: function(item, callback){
 
       var that = this,
           double = false,
@@ -145,6 +146,7 @@ module.exports = {
       this.post('/cart/add.js', payload, function(response){
         that.refreshCart(function(){
          store.commit('cart', true);
+         callback();
         });
       });
     },
@@ -195,7 +197,12 @@ module.exports = {
       //Sumbit product data to component
       this.product = product;
 
-      store.commit('changeTheme', 'dark');
+      if(window.screen.width > 960){
+        store.commit('changeTheme', 'dark');
+      }else{
+        store.commit('changeTheme', 'colored');
+      }
+
 
       //Transform to new position
       setTimeout(function(){

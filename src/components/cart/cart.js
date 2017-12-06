@@ -13,7 +13,8 @@ module.exports = {
   props: [
     'cartData',
     'removeFromCart',
-    'cartRefresh'
+    'cartRefresh',
+    'closeCart'
   ],
 
   computed: {
@@ -30,9 +31,9 @@ module.exports = {
         that.cartRefresh(function(){
            that.removingItem = null;
         });
-        // if(this.cartData){
-        //   store.commit('cart', false);
-        // }
+        if(that.cartData.items < 1){
+          that.closeCart();
+        }
       });
     }
 

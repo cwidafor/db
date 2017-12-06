@@ -2,7 +2,7 @@
 	<router-view v-if="storeData != null"></router-view>
 	<collectionDisplay :selectProduct="selectFunction" :collection="storeData.collections.featured" :addToCart="addToCart" :cartItems="storeData.cart.items"></collectionDisplay>
 	<product :candidate="product" :close="closeFunction" :productProperties="productProperties" :backgroundProperties="backgroundProperties" :animationOn="productAnimation" :addToCart="addToCart" :cartItems="storeData.cart.items"></product>
-	<cart :cartData="storeData.cart" :removeFromCart="removeFromCart" :cartRefresh="refreshCart"></cart>
+	<cart :cartData="storeData.cart" :removeFromCart="removeFromCart" :cartRefresh="refreshCart" :closeCart="closeCart"></cart>
 	<div class="cart-overlay" :class="{ 'active': cartStatus === true }" @click="closeCart()"></div>
 </div>
 </template><script>module.exports = {
@@ -124,11 +124,12 @@
             id: itemID
           };
       $.post('/cart/change.js', payload, function(response){
+        console.log(response);
         callback();
       });
     },
 
-    addToCart: function(item){
+    addToCart: function(item, callback){
 
       var that = this,
           double = false,
@@ -152,6 +153,7 @@
       this.post('/cart/add.js', payload, function(response){
         that.refreshCart(function(){
          store.commit('cart', true);
+         callback();
         });
       });
     },
@@ -202,7 +204,12 @@
       //Sumbit product data to component
       this.product = product;
 
-      store.commit('changeTheme', 'dark');
+      if(window.screen.width > 960){
+        store.commit('changeTheme', 'dark');
+      }else{
+        store.commit('changeTheme', 'colored');
+      }
+
 
       //Transform to new position
       setTimeout(function(){

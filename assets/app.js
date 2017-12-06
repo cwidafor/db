@@ -21675,11 +21675,12 @@ module.exports = {
         id: itemID
       };
       $.post('/cart/change.js', payload, function (response) {
+        console.log(response);
         callback();
       });
     },
 
-    addToCart: function addToCart(item) {
+    addToCart: function addToCart(item, callback) {
 
       var that = this,
           double = false,
@@ -21701,6 +21702,7 @@ module.exports = {
       this.post('/cart/add.js', payload, function (response) {
         that.refreshCart(function () {
           store.commit('cart', true);
+          callback();
         });
       });
     },
@@ -21751,7 +21753,11 @@ module.exports = {
 
       this.product = product;
 
-      store.commit('changeTheme', 'dark');
+      if (window.screen.width > 960) {
+        store.commit('changeTheme', 'dark');
+      } else {
+        store.commit('changeTheme', 'colored');
+      }
 
       setTimeout(function () {
         Vue.nextTick(function () {
@@ -21783,7 +21789,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.storeData != null)?_c('div',{staticClass:"app-container"},[(_vm.storeData != null)?_c('router-view'):_vm._e(),_vm._v(" "),_c('collectionDisplay',{attrs:{"selectProduct":_vm.selectFunction,"collection":_vm.storeData.collections.featured,"addToCart":_vm.addToCart,"cartItems":_vm.storeData.cart.items}}),_vm._v(" "),_c('product',{attrs:{"candidate":_vm.product,"close":_vm.closeFunction,"productProperties":_vm.productProperties,"backgroundProperties":_vm.backgroundProperties,"animationOn":_vm.productAnimation,"addToCart":_vm.addToCart,"cartItems":_vm.storeData.cart.items}}),_vm._v(" "),_c('cart',{attrs:{"cartData":_vm.storeData.cart,"removeFromCart":_vm.removeFromCart,"cartRefresh":_vm.refreshCart}}),_vm._v(" "),_c('div',{staticClass:"cart-overlay",class:{ 'active': _vm.cartStatus === true },on:{"click":function($event){_vm.closeCart()}}})],1):_vm._e()}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.storeData != null)?_c('div',{staticClass:"app-container"},[(_vm.storeData != null)?_c('router-view'):_vm._e(),_vm._v(" "),_c('collectionDisplay',{attrs:{"selectProduct":_vm.selectFunction,"collection":_vm.storeData.collections.featured,"addToCart":_vm.addToCart,"cartItems":_vm.storeData.cart.items}}),_vm._v(" "),_c('product',{attrs:{"candidate":_vm.product,"close":_vm.closeFunction,"productProperties":_vm.productProperties,"backgroundProperties":_vm.backgroundProperties,"animationOn":_vm.productAnimation,"addToCart":_vm.addToCart,"cartItems":_vm.storeData.cart.items}}),_vm._v(" "),_c('cart',{attrs:{"cartData":_vm.storeData.cart,"removeFromCart":_vm.removeFromCart,"cartRefresh":_vm.refreshCart,"closeCart":_vm.closeCart}}),_vm._v(" "),_c('div',{staticClass:"cart-overlay",class:{ 'active': _vm.cartStatus === true },on:{"click":function($event){_vm.closeCart()}}})],1):_vm._e()}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -21856,7 +21862,7 @@ module.exports = {
     };
   },
 
-  props: ['cartData', 'removeFromCart', 'cartRefresh'],
+  props: ['cartData', 'removeFromCart', 'cartRefresh', 'closeCart'],
 
   computed: {
     cartStatus: function cartStatus() {
@@ -21872,6 +21878,9 @@ module.exports = {
         that.cartRefresh(function () {
           that.removingItem = null;
         });
+        if (that.cartData.items < 1) {
+          that.closeCart();
+        }
       });
     }
 
@@ -21910,7 +21919,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cart",class:{ 'open': _vm.cartStatus === true }},[_c('div',{staticClass:"cart-container"},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"cart-backpack"},_vm._l((_vm.cartData.items),function(item){return _c('div',{staticClass:"cart-item"},[_c('div',{staticClass:"cart-item__image"},[_c('img',{attrs:{"src":item.image}})]),_vm._v(" "),_c('div',{staticClass:"cart-item__info"},[_c('h5',[_vm._v(_vm._s(item.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm._f("money")(item.price)))])]),_vm._v(" "),_c('button',{staticClass:"alt-button",class:{ 'activated': _vm.removingItem === item.id },on:{"click":function($event){_vm.removeItem(item.id)}}},[_vm._v("Remove Item")])])})),_vm._v(" "),(_vm.cartData.items.length > 0)?_c('div',{staticClass:"cart-button"},[_vm._m(1)]):_vm._e()])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cart",class:{ 'open': _vm.cartStatus === true }},[_c('div',{staticClass:"cart-container"},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"cart-backpack"},_vm._l((_vm.cartData.items),function(item){return _c('div',{staticClass:"cart-item"},[_c('div',{staticClass:"cart-item__image"},[_c('img',{attrs:{"src":item.image}})]),_vm._v(" "),_c('div',{staticClass:"cart-item__info"},[_c('h5',[_vm._v(_vm._s(item.product_title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm._f("money")(item.price)))])]),_vm._v(" "),_c('div',{staticClass:"cart-item__remove",class:{ 'activated': _vm.removingItem === item.id },on:{"click":function($event){_vm.removeItem(item.id)}}},[_c('svg',{attrs:{"version":"1.1","viewBox":"0 0 66.1 66.1","width":"100%","xml:space":"preserve"}},[_c('path',{attrs:{"d":"M52.3,1.2L33.1,20.5L13.8,1.2c-1.7-1.7-4.3-1.7-6,0L1.2,7.8c-1.7,1.7-1.7,4.3,0,6l19.2,19.2L1.2,52.3c-1.7,1.7-1.7,4.3,0,6\n\t\t\t\t\t\tl6.6,6.6c1.7,1.7,4.3,1.7,6,0L33,45.6l19.2,19.2c1.7,1.7,4.3,1.7,6,0l6.6-6.6c1.7-1.7,1.7-4.3,0-6L45.6,33.1l19.2-19.2\n\t\t\t\t\t\tc1.7-1.7,1.7-4.3,0-6l-6.6-6.6C56.6-0.4,53.9-0.4,52.3,1.2z"}})])])])})),_vm._v(" "),(_vm.cartData.items.length > 0)?_c('div',{staticClass:"cart-button"},[_vm._m(1)]):_vm._e()])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cart-header"},[_c('p',[_vm._v("Your Cart")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',{attrs:{"method":"post","action":"/cart"}},[_c('input',{attrs:{"type":"submit","value":"Checkout","name":"checkout"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -22074,7 +22083,9 @@ module.exports = {
   mixins: [],
 
   data: function data() {
-    return {};
+    return {
+      addingProduct: false
+    };
   },
 
   props: ['candidate', 'close', 'productProperties', 'backgroundProperties', 'animationOn', 'addToCart', 'cartItems'],
@@ -22138,6 +22149,13 @@ module.exports = {
         }
       });
       return status;
+    },
+    addProduct: function addProduct(product) {
+      var that = this;
+      this.addingProduct = true;
+      this.addToCart(product, function () {
+        that.addingProduct = false;
+      });
     }
 
   },
@@ -22150,8 +22168,8 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.candidate != null)?_c('div',{staticClass:"product"},[_c('div',{staticClass:"product-bg",style:([_vm.backgroundProperties, _vm.animationOn]),on:{"click":_vm.close}}),_vm._v(" "),_c('div',{staticClass:"product-container",style:([_vm.productProperties, _vm.animationOn])},[_c('div',{staticClass:"product-image"},[_c('img',{attrs:{"src":_vm.candidate.images[0]}})])]),_vm._v(" "),_c('div',{staticClass:"product-description"},[_c('h1',[_vm._v(_vm._s(_vm.candidate.title))]),_vm._v(" "),_c('h2',[_vm._v(_vm._s(_vm._f("money")(_vm.candidate.price))+" // Limited run of 100")]),_vm._v(" "),_c('div',{staticClass:"product-description__info"},[_c('p',[_vm._v(_vm._s(_vm.candidate.description))]),_vm._v(" "),_c('div',{staticClass:"product-description__wrapper"},[_c('div',{staticClass:"product-description__attributes"},[_vm._l((_vm.productAttributes),function(option){return _c('div',{staticClass:"product-description__attributes__item"},[_c('p',[_vm._v(_vm._s(option.name)+":"),(option.name === 'Dimensions')?_c('span',[_vm._v("\"")]):_vm._e(),_c('span',[_vm._v(_vm._s(option.value))])]),_vm._v(" "),_c('div',{staticClass:"divider"})])}),_vm._v(" "),_vm._m(0)],2),_vm._v(" "),(_vm.itemIsAdded(_vm.candidate) === true)?_c('div',{staticClass:"product-atc"},[_c('p',[_vm._v("Added To Cart")]),_vm._v(" "),_vm._m(1)]):_c('button',{on:{"click":function($event){_vm.addToCart(_vm.candidate.variants[0])}}},[_vm._v("Add to Cart")])])])])]):_vm._e()}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"product-description__attributes__item"},[_c('p',[_vm._v("Clutch:"),_c('span',[_vm._v("Rubber")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"product-atc__icon"},[_c('img',{attrs:{"src":"https://cdn.shopify.com/s/files/1/2434/8199/files/image.png?17583971083198994668"}})])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.candidate != null)?_c('div',{staticClass:"product"},[_c('div',{staticClass:"product-bg",style:([_vm.backgroundProperties, _vm.animationOn]),on:{"click":_vm.close}}),_vm._v(" "),_c('div',{staticClass:"product-container",style:([_vm.productProperties, _vm.animationOn])},[_c('div',{staticClass:"product-image"},[_c('img',{attrs:{"src":_vm.candidate.images[0]}})])]),_vm._v(" "),_c('div',{staticClass:"product-description"},[_c('h1',[_vm._v(_vm._s(_vm.candidate.title))]),_vm._v(" "),_c('h2',[_vm._v(_vm._s(_vm._f("money")(_vm.candidate.price))+" // Limited run of 100")]),_vm._v(" "),_c('div',{staticClass:"product-description__info"},[_c('p',[_vm._v(_vm._s(_vm.candidate.description))]),_vm._v(" "),_c('div',{staticClass:"product-description__wrapper"},[_c('div',{staticClass:"product-description__attributes"},[_vm._l((_vm.productAttributes),function(option){return _c('div',{staticClass:"product-description__attributes__item"},[_c('p',[_vm._v(_vm._s(option.name)+":"),(option.name === 'Dimensions')?_c('span',[_vm._v("\"")]):_vm._e(),_c('span',[_vm._v(_vm._s(option.value))])]),_vm._v(" "),_c('div',{staticClass:"divider"})])}),_vm._v(" "),_vm._m(0)],2),_vm._v(" "),(_vm.itemIsAdded(_vm.candidate) === true)?_c('div',{staticClass:"product-atc"},[_c('p',[_vm._v("Added To Cart")])]):_c('button',{staticClass:"product-button",class:{ 'activated': _vm.addingProduct === true },on:{"click":function($event){_vm.addProduct(_vm.candidate.variants[0])}}},[_vm._v("Add to Cart")])])])])]):_vm._e()}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"product-description__attributes__item"},[_c('p',[_vm._v("Clutch:"),_c('span',[_vm._v("Rubber")])])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return

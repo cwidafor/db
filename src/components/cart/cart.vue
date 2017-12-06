@@ -9,10 +9,16 @@
 					<img :src="item.image">
 				</div>
 				<div class="cart-item__info">
-					<h5>{{ item.title }}</h5>
+					<h5>{{ item.product_title }}</h5>
 					<p>{{ item.price | money }}</p>
 				</div>
-				<button class="alt-button" :class="{ 'activated': removingItem === item.id }" @click="removeItem(item.id)">Remove Item</button>
+				<div class="cart-item__remove" :class="{ 'activated': removingItem === item.id }" @click="removeItem(item.id)">
+					<svg version="1.1" viewBox="0 0 66.1 66.1" width="100%" xml:space="preserve">
+					<path d="M52.3,1.2L33.1,20.5L13.8,1.2c-1.7-1.7-4.3-1.7-6,0L1.2,7.8c-1.7,1.7-1.7,4.3,0,6l19.2,19.2L1.2,52.3c-1.7,1.7-1.7,4.3,0,6
+						l6.6,6.6c1.7,1.7,4.3,1.7,6,0L33,45.6l19.2,19.2c1.7,1.7,4.3,1.7,6,0l6.6-6.6c1.7-1.7,1.7-4.3,0-6L45.6,33.1l19.2-19.2
+						c1.7-1.7,1.7-4.3,0-6l-6.6-6.6C56.6-0.4,53.9-0.4,52.3,1.2z"/>
+					</svg>
+				</div>
 			</div>
 		</div>
 
@@ -38,7 +44,8 @@
   props: [
     'cartData',
     'removeFromCart',
-    'cartRefresh'
+    'cartRefresh',
+    'closeCart'
   ],
 
   computed: {
@@ -55,9 +62,9 @@
         that.cartRefresh(function(){
            that.removingItem = null;
         });
-        // if(this.cartData){
-        //   store.commit('cart', false);
-        // }
+        if(that.cartData.items < 1){
+          that.closeCart();
+        }
       });
     }
 

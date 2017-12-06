@@ -30,6 +30,28 @@
 		}
 
 	}
+	&.colored{
+		background-color: $red-base;
+		.header{
+			&-logo{
+				&__color{
+					fill: white;
+				}
+			}
+			&-link{
+				color: white;
+			}
+			&-cart{
+				p{
+					color: white;
+				}
+				&__color{
+					fill:white;
+				}
+			}
+		}
+
+	}
 	&-link{
 		text-decoration: none;
 		color: $color-header;

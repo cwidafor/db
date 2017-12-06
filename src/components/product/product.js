@@ -6,7 +6,7 @@ module.exports = {
 
   data: function () {
     return{
-      
+      addingProduct: false
     }
   },
 
@@ -83,6 +83,13 @@ module.exports = {
         }
       });
       return status;
+    },
+    addProduct: function(product){
+      var that = this;
+      this.addingProduct = true;
+      this.addToCart(product, function(){
+        that.addingProduct = false;
+      });
     }
 
   },
