@@ -1,5 +1,13 @@
 <template><div class="header" :class="headerTheme">
-	<div class="header-logo" @click="goHome()">
+	<div class="header-logo back" @click="goHome()" v-if="headerTheme === 'colored'">
+		<svg version="1.1" x="0px" y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
+		<polygon class="header-logo__color" points="34,22.9 18.2,22.9 23,18.1 21.5,16.5 14,24 21.5,31.5 23,29.9 18.2,25.1 34,25.1 "/>
+		<path class="header-logo__color" d="M46,2v44H2V2H46 M48,0H0v48h48V0z"/>
+		</svg>
+
+
+	</div>
+	<div class="header-logo" @click="goHome()" v-else>
 		<svg version="1.1" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 442.8 162.4" style="enable-background:new 0 0 442.8 162.4;">
 			<g>
 				<path class="header-logo__color" d="M29.8,104.7c-1.7,0-2.5,1.2-2.5,2.8c-0.1,1.4,0.9,2.7,2.3,2.8c0.1,0,0.1,0,0.2,0h37.1c1.3,0.1,2.5-1,2.5-2.3

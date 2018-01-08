@@ -11,6 +11,8 @@
 
 		<h1>{{ candidate.title }}</h1>
 		<h2>{{ candidate.price | money }} // Limited run of 100</h2>
+
+
 		<div class="product-description__info">
 			<p>{{ candidate.description }}</p>
 			<div class="product-description__wrapper">
@@ -25,14 +27,14 @@
 
 				</div>
 
-				<div class="product-atc" v-if="itemIsAdded(candidate) === true">
+				<div class="product-atc desktop" v-if="itemIsAdded(candidate) === true">
 					<p>Added To Cart</p>
 <!-- 					<div class="product-atc__icon">
 						<img src="https://cdn.shopify.com/s/files/1/2434/8199/files/image.png?17583971083198994668">
 					</div> -->
 				</div>
 				<!-- ATC -->
-				<button class="product-button" :class="{ 'activated': addingProduct === true }" v-else @click="addProduct(candidate.variants[0])">Add to Cart</button>
+				<button class="product-button desktop" :class="{ 'activated': addingProduct === true }" v-else @click="addProduct(candidate.variants[0])">Add to Cart</button>
 			</div>
 		</div>
 	</div>

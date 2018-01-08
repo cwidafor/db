@@ -8,6 +8,9 @@
 
 	&-button{
 		width: 100%;
+		&.mobile{
+			margin-bottom: 1rem;
+		}
 		&.activated{
 			&:before{
 				background-color: black;
@@ -134,6 +137,7 @@
 	.product{
 		height: auto;
 		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
 		overflow-x: hidden;
 		&-description{
 			width: 100%;
