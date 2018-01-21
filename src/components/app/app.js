@@ -212,7 +212,11 @@ module.exports = {
             top: '0',
             left: '0'
           };
-          that.backgroundProperties.transform = 'scale(8)';
+          if(window.screen.width < 960){
+             that.backgroundProperties.transform = 'scale(4)';
+          } else {
+             that.backgroundProperties.transform = 'scale(8)';
+          }
         });
       }, 50)
 

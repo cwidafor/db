@@ -29,7 +29,6 @@ var gulp = require('gulp'),
 	path = require('path'),
 	argv = require('yargs').argv,
 	size = require('gulp-filesize'),
-	config = require('./config.js'),
 	stripDebug = require('gulp-strip-debug'),
 	uglify = require('gulp-uglify'),
 	size = require('gulp-filesize'),
@@ -42,11 +41,9 @@ var gulp = require('gulp'),
 ////Src and Dest////
 ////////////////////
 
-var serverName = config('browserSyncServer'),
-
 		//Master and Src Files for Customer Facing App
 		//"Master" is the booters directory
-		loopFiles = {
+		var loopFiles = {
 			vueMaster: 'src/components/loop/',
 			vueSrc: ['src/components/**/**'],
 

@@ -14,7 +14,7 @@
 
 
 		<div class="product-description__info">
-			<p>{{ candidate.description }}</p>
+			<p class="product-description__copy">{{ candidate.description }}</p>
 			<div class="product-description__wrapper">
 				<div class="product-description__attributes">
 					<div class="product-description__attributes__item" v-for="option in productAttributes">

@@ -12,6 +12,9 @@
 		background-color: transparent;
 		.header{
 			&-logo{
+				&.back{
+					width: 6.5rem;
+				}
 				&__color{
 					fill: white;
 				}
@@ -60,6 +63,7 @@
 		color: $color-header;
 		margin: 0 1rem;
 		text-transform: lowercase;
+		font-family: 'apercuBold';
 		&.graveyard{
 			opacity: 0.4;
 			pointer-events: none;

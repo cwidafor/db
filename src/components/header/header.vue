@@ -1,5 +1,5 @@
 <template><div class="header" :class="headerTheme">
-	<div class="header-logo back" @click="goHome()" v-if="headerTheme === 'colored'">
+	<div class="header-logo back" @click="goHome()" v-if="headerTheme === 'colored' || headerTheme === 'dark'">
 		<svg version="1.1" x="0px" y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
 		<polygon class="header-logo__color" points="34,22.9 18.2,22.9 23,18.1 21.5,16.5 14,24 21.5,31.5 23,29.9 18.2,25.1 34,25.1 "/>
 		<path class="header-logo__color" d="M46,2v44H2V2H46 M48,0H0v48h48V0z"/>
@@ -99,11 +99,14 @@
 
 	</div>
 	<div class="header-link__container">
-		<a class="header-link" href="/">
+		<!-- <a class="header-link" href="/">
 			new pins
 		</a>
 		<a class="header-link" v-for="link in linkList" v-if="link != null" :href="link.handle" :class="link.handle">
 			{{ link.title }}
+		</a> -->
+		<a class="header-link">
+			Free Shipping on Domestic orders
 		</a>
 	</div>
 	<div class="header-cart" @click="openCart()">
