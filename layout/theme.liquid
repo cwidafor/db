@@ -49,5 +49,9 @@
 
   {{ 'app.js'  | asset_url | script_tag }}
   {{ 'theme.js'  | asset_url | script_tag }}
+  {% include 'sweettooth-initializer' %}
+
+  {% include 'sweettooth-tab-widget' %}
+
 </body>
 </html>
